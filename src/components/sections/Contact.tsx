@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { Mail, MessageSquare, MapPin, Send, CheckCircle2, Phone } from 'lucide-react';
-import { GithubIcon } from '@/components/ui/Icons';
+import { GithubIcon, LinkedinIcon, InstagramIcon } from '@/components/ui/Icons';
 import styles from './Contact.module.css';
 import { soundFx } from '@/utils/audio';
 import { ProfileData } from '@/types/portfolio';
@@ -142,11 +142,53 @@ export default function Contact({ profile }: ContactProps) {
                 <GithubIcon size={22} />
               </div>
               <div>
-                <span className={styles.contactLabel}>Profil Kode</span>
+                <span className={styles.contactLabel}>Profil GitHub</span>
                 <p className={styles.contactValue}>
                   {currentProfile.social_links.github
-                    ? currentProfile.social_links.github.replace(/https?:\/\/(www\.)?github\.com\//, '')
+                    ? currentProfile.social_links.github.replace(/https?:\/\/(www\.)?github\.com\//, '').replace(/\/$/, '')
                     : 'github.com/dimar-dev'}
+                </p>
+              </div>
+            </a>
+
+            <a
+              href={currentProfile.social_links.linkedin || 'https://linkedin.com'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.contactCard}
+              onMouseEnter={() => soundFx.playHover()}
+              onClick={() => soundFx.playClick()}
+            >
+              <div className={styles.iconWrapper} style={{ color: '#0077b5', borderColor: 'rgba(0, 119, 181, 0.4)', background: 'rgba(0, 119, 181, 0.1)' }}>
+                <LinkedinIcon size={22} />
+              </div>
+              <div>
+                <span className={styles.contactLabel}>Profil LinkedIn</span>
+                <p className={styles.contactValue}>
+                  {currentProfile.social_links.linkedin
+                    ? currentProfile.social_links.linkedin.replace(/https?:\/\/(www\.)?linkedin\.com\/(in\/)?/, '').replace(/\/$/, '')
+                    : 'linkedin.com/in/dimar'}
+                </p>
+              </div>
+            </a>
+
+            <a
+              href={currentProfile.social_links.instagram || 'https://instagram.com'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.contactCard}
+              onMouseEnter={() => soundFx.playHover()}
+              onClick={() => soundFx.playClick()}
+            >
+              <div className={styles.iconWrapper} style={{ color: '#e1306c', borderColor: 'rgba(225, 48, 108, 0.4)', background: 'rgba(225, 48, 108, 0.1)' }}>
+                <InstagramIcon size={22} />
+              </div>
+              <div>
+                <span className={styles.contactLabel}>Profil Instagram</span>
+                <p className={styles.contactValue}>
+                  {currentProfile.social_links.instagram
+                    ? '@' + currentProfile.social_links.instagram.replace(/https?:\/\/(www\.)?instagram\.com\//, '').replace(/\/$/, '').replace(/^@/, '')
+                    : '@dimar'}
                 </p>
               </div>
             </a>

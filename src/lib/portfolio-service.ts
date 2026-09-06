@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { getSupabase } from './supabase';
+import { getSupabaseAdmin } from './supabase-admin';
 import { sendNotificationEmail } from './email-service';
 import { recordAnalyticsEvent } from './analytics-service';
 import {
@@ -144,6 +145,7 @@ export async function getPortfolioData(): Promise<FullPortfolioData> {
 
     let profile: ProfileData = localData.profile;
     if (profileRes.data && !profileRes.error) {
+      const statsObj = (profileRes.data.stats || {}) as Record<string, unknown>;
       profile = {
         id: profileRes.data.id,
         name: profileRes.data.name || localData.profile.name,
@@ -153,11 +155,14 @@ export async function getPortfolioData(): Promise<FullPortfolioData> {
         major: profileRes.data.major || localData.profile.major,
         roles: Array.isArray(profileRes.data.roles) ? profileRes.data.roles : localData.profile.roles,
         bio_description: profileRes.data.bio_description || localData.profile.bio_description,
-        avatar_url: profileRes.data.avatar_url || localData.profile.avatar_url || '/images/dimar.jpg',
-        cv_url: profileRes.data.cv_url || localData.profile.cv_url || '/cv/CV_Muhammad_Jihan_Dimar.pdf',
-        cv_last_updated: profileRes.data.cv_last_updated || localData.profile.cv_last_updated,
+        avatar_url: profileRes.data.avatar_url || (typeof statsObj._avatar_url === 'string' ? statsObj._avatar_url : undefined) || localData.profile.avatar_url || '/images/dimar.jpg',
+        cv_url: profileRes.data.cv_url || (typeof statsObj._cv_url === 'string' ? statsObj._cv_url : undefined) || localData.profile.cv_url || '/cv/CV_Muhammad_Jihan_Dimar.pdf',
+        cv_last_updated: profileRes.data.cv_last_updated || (typeof statsObj._cv_last_updated === 'string' ? statsObj._cv_last_updated : undefined) || localData.profile.cv_last_updated,
         stats: profileRes.data.stats || localData.profile.stats,
-        social_links: profileRes.data.social_links || localData.profile.social_links,
+        social_links: {
+          ...localData.profile.social_links,
+          ...(profileRes.data.social_links || {}),
+        },
       };
     }
 
@@ -225,10 +230,17 @@ export async function upsertProfile(profile: ProfileData): Promise<{ success: bo
   writeLocalPortfolio(current);
 
   // 2. Update Supabase if available
-  const supabase = getSupabase();
+  const supabase = getSupabaseAdmin() || getSupabase();
   if (supabase) {
     try {
-      await supabase.from('portfolio_profile').upsert({
+      const statsPayload = {
+        ...(profile.stats || {}),
+        _avatar_url: profile.avatar_url,
+        _cv_url: profile.cv_url,
+        _cv_last_updated: profile.cv_last_updated,
+      };
+
+      const basePayload: Record<string, unknown> = {
         id: 'main',
         name: profile.name,
         call_name: profile.call_name,
@@ -237,15 +249,36 @@ export async function upsertProfile(profile: ProfileData): Promise<{ success: bo
         major: profile.major,
         roles: profile.roles,
         bio_description: profile.bio_description,
+        stats: statsPayload,
+        social_links: profile.social_links,
+        updated_at: new Date().toISOString(),
+      };
+
+      // Try full payload with explicit columns if they exist in DB
+      const fullPayload = {
+        ...basePayload,
         avatar_url: profile.avatar_url,
         cv_url: profile.cv_url,
         cv_last_updated: profile.cv_last_updated,
-        stats: profile.stats,
-        social_links: profile.social_links,
-        updated_at: new Date().toISOString(),
-      });
+      };
+
+      const resFull = await supabase.from('portfolio_profile').upsert(fullPayload);
+      if (resFull.error) {
+        // If column error (PGRST204), fallback to basePayload which stores media safely in stats
+        if (resFull.error.code === 'PGRST204' || resFull.error.message.includes('column')) {
+          const resBase = await supabase.from('portfolio_profile').upsert(basePayload);
+          if (resBase.error) {
+            console.error('[upsertProfile] Supabase base error:', resBase.error);
+            return { success: false, error: resBase.error.message };
+          }
+        } else {
+          console.error('[upsertProfile] Supabase full error:', resFull.error);
+          return { success: false, error: resFull.error.message };
+        }
+      }
     } catch (err: unknown) {
       console.warn('Gagal menyimpan profil ke Supabase (tersimpan lokal):', err);
+      return { success: false, error: err instanceof Error ? err.message : String(err) };
     }
   }
 
@@ -264,10 +297,10 @@ export async function upsertProject(project: ProjectItem): Promise<{ success: bo
   writeLocalPortfolio(current);
 
   // 2. Update Supabase if available
-  const supabase = getSupabase();
+  const supabase = getSupabaseAdmin() || getSupabase();
   if (supabase) {
     try {
-      await supabase.from('portfolio_projects').upsert({
+      const { error } = await supabase.from('portfolio_projects').upsert({
         id: project.id,
         title: project.title,
         category: project.category,
@@ -279,8 +312,13 @@ export async function upsertProject(project: ProjectItem): Promise<{ success: bo
         details: project.details,
         order_index: project.orderIndex ?? 0,
       });
+      if (error) {
+        console.error('Supabase upsertProject error:', error);
+        return { success: false, error: error.message };
+      }
     } catch (err: unknown) {
       console.warn('Gagal menyimpan proyek ke Supabase (tersimpan lokal):', err);
+      return { success: false, error: err instanceof Error ? err.message : String(err) };
     }
   }
 
@@ -294,12 +332,17 @@ export async function deleteProject(id: string): Promise<{ success: boolean; err
   writeLocalPortfolio(current);
 
   // 2. Update Supabase if available
-  const supabase = getSupabase();
+  const supabase = getSupabaseAdmin() || getSupabase();
   if (supabase) {
     try {
-      await supabase.from('portfolio_projects').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_projects').delete().eq('id', id);
+      if (error) {
+        console.error('Supabase deleteProject error:', error);
+        return { success: false, error: error.message };
+      }
     } catch (err: unknown) {
       console.warn('Gagal menghapus proyek di Supabase (dihapus lokal):', err);
+      return { success: false, error: err instanceof Error ? err.message : String(err) };
     }
   }
 
@@ -321,10 +364,10 @@ export async function upsertSkill(skill: SkillItem): Promise<{ success: boolean;
   writeLocalPortfolio(current);
 
   // 2. Update Supabase if available
-  const supabase = getSupabase();
+  const supabase = getSupabaseAdmin() || getSupabase();
   if (supabase) {
     try {
-      await supabase.from('portfolio_skills').upsert({
+      const { error } = await supabase.from('portfolio_skills').upsert({
         id,
         name: skill.name,
         category: skill.category,
@@ -334,8 +377,13 @@ export async function upsertSkill(skill: SkillItem): Promise<{ success: boolean;
         color_grad: skill.colorGrad || null,
         order_index: skill.orderIndex ?? 0,
       });
+      if (error) {
+        console.error('Supabase upsertSkill error:', error);
+        return { success: false, error: error.message };
+      }
     } catch (err: unknown) {
       console.warn('Gagal menyimpan keahlian di Supabase (tersimpan lokal):', err);
+      return { success: false, error: err instanceof Error ? err.message : String(err) };
     }
   }
 
@@ -349,12 +397,17 @@ export async function deleteSkill(id: string): Promise<{ success: boolean; error
   writeLocalPortfolio(current);
 
   // 2. Update Supabase if available
-  const supabase = getSupabase();
+  const supabase = getSupabaseAdmin() || getSupabase();
   if (supabase) {
     try {
-      await supabase.from('portfolio_skills').delete().eq('id', id);
+      const { error } = await supabase.from('portfolio_skills').delete().eq('id', id);
+      if (error) {
+        console.error('Supabase deleteSkill error:', error);
+        return { success: false, error: error.message };
+      }
     } catch (err: unknown) {
       console.warn('Gagal menghapus keahlian di Supabase (dihapus lokal):', err);
+      return { success: false, error: err instanceof Error ? err.message : String(err) };
     }
   }
 

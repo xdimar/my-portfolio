@@ -80,7 +80,19 @@ export default function AdminDashboardClient({ initialData, initialMessages, ini
   const cvInputRef = useRef<HTMLInputElement>(null);
 
   // Local state initialized with server data
-  const [profile, setProfile] = useState<ProfileData>(initialData.profile);
+  const [profile, setProfile] = useState<ProfileData>(() => {
+    const defaultSocial = {
+      github: 'https://github.com',
+      linkedin: 'https://linkedin.com',
+      instagram: 'https://instagram.com',
+      whatsapp: 'https://wa.me/',
+      email: 'contact@dimar.dev',
+    };
+    return {
+      ...initialData.profile,
+      social_links: Object.assign({}, defaultSocial, initialData.profile?.social_links),
+    };
+  });
   const [projects, setProjects] = useState<ProjectItem[]>(initialData.projects);
   const [skills, setSkills] = useState<SkillItem[]>(initialData.skills);
   const [messages, setMessages] = useState<ContactMessage[]>(initialMessages);
@@ -1183,11 +1195,11 @@ export default function AdminDashboardClient({ initialData, initialMessages, ini
                   <input
                     type="text"
                     className={styles.fieldInput}
-                    value={profile.social_links.github}
+                    value={profile.social_links?.github || ''}
                     onChange={(e) =>
                       setProfile({
                         ...profile,
-                        social_links: { ...profile.social_links, github: e.target.value },
+                        social_links: { ...(profile.social_links || {}), github: e.target.value },
                       })
                     }
                   />
@@ -1198,11 +1210,11 @@ export default function AdminDashboardClient({ initialData, initialMessages, ini
                   <input
                     type="text"
                     className={styles.fieldInput}
-                    value={profile.social_links.linkedin}
+                    value={profile.social_links?.linkedin || ''}
                     onChange={(e) =>
                       setProfile({
                         ...profile,
-                        social_links: { ...profile.social_links, linkedin: e.target.value },
+                        social_links: { ...(profile.social_links || {}), linkedin: e.target.value },
                       })
                     }
                   />
@@ -1213,32 +1225,32 @@ export default function AdminDashboardClient({ initialData, initialMessages, ini
                   <input
                     type="text"
                     className={styles.fieldInput}
-                    value={profile.social_links.instagram}
+                    value={profile.social_links?.instagram || ''}
                     onChange={(e) =>
                       setProfile({
                         ...profile,
-                        social_links: { ...profile.social_links, instagram: e.target.value },
+                        social_links: { ...(profile.social_links || {}), instagram: e.target.value },
                       })
                     }
                   />
                 </div>
 
                 <div className={styles.fieldGroup}>
-                  <label className={styles.fieldLabel}>Nomor WhatsApp</label>
+                  <label className={styles.fieldLabel}>Nomor / Tautan WhatsApp</label>
                   <input
                     type="text"
                     className={styles.fieldInput}
                     placeholder="Contoh: 6282312345678 atau https://wa.me/6282312345678"
-                    value={profile.social_links.whatsapp}
+                    value={profile.social_links?.whatsapp || ''}
                     onChange={(e) =>
                       setProfile({
                         ...profile,
-                        social_links: { ...profile.social_links, whatsapp: e.target.value },
+                        social_links: { ...(profile.social_links || {}), whatsapp: e.target.value },
                       })
                     }
                   />
                   <small style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '0.25rem', display: 'block' }}>
-                    Masukkan nomor saja (628xxx) atau URL lengkap wa.me. Kode negara wajib (62 untuk Indonesia).
+                    Masukkan nomor WhatsApp (contoh: 6282312345678) atau tautan https://wa.me/628xxx. Digunakan untuk tombol WhatsApp di Kontak website.
                   </small>
                 </div>
 
@@ -1247,11 +1259,11 @@ export default function AdminDashboardClient({ initialData, initialMessages, ini
                   <input
                     type="email"
                     className={styles.fieldInput}
-                    value={profile.social_links.email}
+                    value={profile.social_links?.email || ''}
                     onChange={(e) =>
                       setProfile({
                         ...profile,
-                        social_links: { ...profile.social_links, email: e.target.value },
+                        social_links: { ...(profile.social_links || {}), email: e.target.value },
                       })
                     }
                   />

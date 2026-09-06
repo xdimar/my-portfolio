@@ -9,7 +9,8 @@ import Contact from '@/components/sections/Contact';
 import Footer from '@/components/sections/Footer';
 import { getPortfolioData } from '@/lib/portfolio-service';
 
-export const revalidate = 60; // Instant cached serving with automatic on-demand revalidation on admin updates
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default async function Home() {
   const data = await getPortfolioData();

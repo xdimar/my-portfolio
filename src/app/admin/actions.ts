@@ -25,8 +25,9 @@ export async function updateProfileAction(profile: ProfileData) {
   await checkAdminAuth();
   const result = await upsertProfile(profile);
   if (result.success) {
-    revalidatePath('/');
-    revalidatePath('/admin');
+    revalidatePath('/', 'layout');
+    revalidatePath('/', 'page');
+    revalidatePath('/admin', 'layout');
   }
   return result;
 }

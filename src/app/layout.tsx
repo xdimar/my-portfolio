@@ -74,8 +74,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
-  <Analytics/>
   return (
     <html lang="id" data-theme="cyan" suppressHydrationWarning>
       <head>
@@ -95,6 +93,7 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="scanline-overlay" />
           <AnalyticsTracker />
+          <Analytics />
           <ConsoleBanner />
           {children}
         </ThemeProvider>
