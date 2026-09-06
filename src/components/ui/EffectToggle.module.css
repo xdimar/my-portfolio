@@ -1,0 +1,166 @@
+/* ─── Wrapper ──────────────────────────────────────────────────── */
+.wrapper {
+  position: relative;
+  display:  inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 10;
+}
+
+/* ─── Pill Trigger Button ──────────────────────────────────────── */
+.trigger {
+  display:     inline-flex;
+  align-items: center;
+  gap:         0.4rem;
+  padding:     0.35rem 0.85rem 0.35rem 0.6rem;
+
+  font-family: var(--font-mono);
+  font-size:   0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--neon-cyan);
+
+  background:    rgba(0, 242, 254, 0.06);
+  border:        1px solid rgba(0, 242, 254, 0.25);
+  border-radius: 9999px;
+  cursor:        pointer;
+  backdrop-filter: blur(10px);
+
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.trigger:hover,
+.triggerOpen {
+  background:   rgba(0, 242, 254, 0.12);
+  border-color: var(--neon-cyan);
+  box-shadow:   0 0 14px rgba(0, 242, 254, 0.2);
+}
+
+.triggerIcon {
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.triggerLabel {
+  line-height: 1;
+}
+
+.triggerCaret {
+  font-size:   0.55rem;
+  opacity:     0.6;
+  transition:  transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* ─── Dropdown Panel ───────────────────────────────────────────── */
+.panel {
+  position:   absolute;
+  top:        calc(100% + 8px);
+  right:      0;
+  min-width:  190px;
+
+  background:    rgba(13, 18, 29, 0.88);
+  border:        1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  box-shadow:    0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.08);
+
+  overflow:  hidden;
+  opacity:   0;
+  transform: translateY(-6px) scale(0.97);
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.panelOpen {
+  opacity:        1;
+  transform:      translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ─── Effect Option ────────────────────────────────────────────── */
+.option {
+  display:     flex;
+  align-items: center;
+  gap:         0.7rem;
+  width:       100%;
+  padding:     0.65rem 0.9rem;
+
+  background:  transparent;
+  border:      none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  cursor:      pointer;
+  text-align:  left;
+  transition:  background 0.15s ease;
+}
+
+.option:last-child {
+  border-bottom: none;
+}
+
+.option:hover {
+  background: rgba(0, 242, 254, 0.07);
+}
+
+.optionActive {
+  background: rgba(0, 242, 254, 0.1);
+}
+
+.optionIcon {
+  display:     flex;
+  align-items: center;
+  color:       var(--neon-cyan);
+  opacity:     0.85;
+  flex-shrink: 0;
+}
+
+.optionActive .optionIcon {
+  opacity: 1;
+  filter:  drop-shadow(0 0 4px var(--neon-cyan));
+}
+
+.optionText {
+  display:        flex;
+  flex-direction: column;
+  gap:            0.1rem;
+  flex: 1;
+}
+
+.optionLabel {
+  font-family:    var(--font-mono);
+  font-size:      0.78rem;
+  font-weight:    600;
+  color:          #e2e8f0;
+  letter-spacing: 0.02em;
+}
+
+.optionActive .optionLabel {
+  color: var(--neon-cyan);
+}
+
+.optionDesc {
+  font-family: var(--font-mono);
+  font-size:   0.62rem;
+  color:       #64748b;
+  letter-spacing: 0.02em;
+}
+
+.optionCheck {
+  font-size: 0.75rem;
+  color:     var(--neon-cyan);
+  filter:    drop-shadow(0 0 4px var(--neon-cyan));
+  flex-shrink: 0;
+}
+
+/* ─── Mobile ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .triggerLabel {
+    display: none;
+  }
+  .trigger {
+    padding: 0.35rem 0.55rem;
+    gap: 0;
+  }
+}

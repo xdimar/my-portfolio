@@ -1,0 +1,29 @@
+[
+  {
+    "id": "4d0e07e0-d87a-45fa-969e-bc2b3bd9ee40",
+    "name": "Masss Dimarrr",
+    "email": "ddimar74@gmail.com",
+    "subject": "asf",
+    "message": "feeeee",
+    "created_at": "2026-09-04T16:01:01.805Z",
+    "is_read": false
+  },
+  {
+    "id": "38dd43b3-c260-4269-b938-f3725c9f3a40",
+    "name": "Budi SantosoBudi Santoso",
+    "email": "budi.santoso@startup.id",
+    "subject": "Pengembangan Arsitektur Web Next.js",
+    "message": "Halo Dimar, kami tertarik merekrut Anda untuk proyek arsitektur fullstack web.",
+    "created_at": "2026-09-04T15:54:47.722Z",
+    "is_read": false
+  },
+  {
+    "id": "msg-1788535125277-9iq13",
+    "name": "Ahmad Fauzi (Klien)",
+    "email": "ahmad.fauzi@example.com",
+    "subject": "Proyek Website Company Profile 3D",
+    "message": "Halo Dimar, saya sangat terkesan dengan portofolio Anda. Kami ingin mengajak Anda mengerjakan proyek web 3D untuk perusahaan kami.",
+    "created_at": "2026-09-04T15:18:45.277Z",
+    "is_read": true
+  }
+]

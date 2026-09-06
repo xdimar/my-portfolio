@@ -1,0 +1,187 @@
+.cardContainer {
+  perspective: 1200px;
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  background: rgba(13, 18, 29, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 242, 254, 0.15);
+  overflow: hidden;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.cardInner:hover {
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 254, 0.3);
+  border-color: rgba(0, 242, 254, 0.6);
+}
+
+.hologramShine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-radius: 24px;
+  z-index: 5;
+  transition: opacity 0.3s ease;
+}
+
+.techCornerTL, .techCornerTR, .techCornerBL, .techCornerBR {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: var(--neon-cyan);
+  border-style: solid;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.techCornerTL {
+  top: 12px;
+  left: 12px;
+  border-width: 2px 0 0 2px;
+}
+
+.techCornerTR {
+  top: 12px;
+  right: 12px;
+  border-width: 2px 2px 0 0;
+}
+
+.techCornerBL {
+  bottom: 12px;
+  left: 12px;
+  border-width: 0 0 2px 2px;
+}
+
+.techCornerBR {
+  bottom: 12px;
+  right: 12px;
+  border-width: 0 2px 2px 0;
+}
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  height: 380px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #0f172a 0%, #07090e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photoImg {
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.5s ease;
+}
+
+.cardInner:hover .photoImg {
+  transform: scale(1.04);
+}
+
+.photoGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 65%;
+  background: linear-gradient(to top, rgba(13, 18, 29, 0.98) 10%, rgba(13, 18, 29, 0.4) 60%, transparent 100%);
+  z-index: 2;
+}
+
+.cardContent {
+  position: relative;
+  z-index: 4;
+  padding: 1.25rem 1.5rem 1.5rem 1.5rem;
+  margin-top: -3.5rem;
+}
+
+.statusRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.statusPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 0.25rem 0.65rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 9999px;
+  color: #34d399;
+}
+
+.alumniBadge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+.nameHeading {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #f8fafc;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+
+.nickCallout {
+  color: var(--neon-cyan);
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  margin-bottom: 0.75rem;
+}
+
+.roleTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.roleTag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #cbd5e1;
+}
+
+.bottomBorderPulse {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--neon-purple), transparent);
+  animation: sweep 4s linear infinite;
+}
+
+@keyframes sweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

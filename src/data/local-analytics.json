@@ -1,0 +1,281 @@
+[
+  {
+    "id": "evt-1788670916194-v2okr",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/admin",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-06T05:01:56.194Z"
+  },
+  {
+    "id": "evt-1788670864246-mrt69",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-06T05:01:04.246Z"
+  },
+  {
+    "id": "evt-1788667702378-duel4",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "360x740"
+    },
+    "created_at": "2026-09-06T04:08:22.378Z"
+  },
+  {
+    "id": "evt-1788667667394-ep7kh",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "360x740"
+    },
+    "created_at": "2026-09-06T04:07:47.394Z"
+  },
+  {
+    "id": "evt-1788666875099-y8ys7",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/",
+      "screen": "1280x612",
+      "referrer": "http://localhost:3000/admin"
+    },
+    "created_at": "2026-09-06T03:54:35.099Z"
+  },
+  {
+    "id": "evt-1788666638965-81rj6",
+    "event_type": "project_click",
+    "event_data": {
+      "device": "desktop",
+      "path": "/",
+      "screen": "1280x612",
+      "title": "DimarCloud • Network Topology & Server Monitor"
+    },
+    "created_at": "2026-09-06T03:50:38.965Z"
+  },
+  {
+    "id": "evt-1788665213796-q27ia",
+    "event_type": "cv_download",
+    "event_data": {
+      "device": "desktop",
+      "path": "/",
+      "screen": "1280x612",
+      "source": "navbar"
+    },
+    "created_at": "2026-09-06T03:26:53.796Z"
+  },
+  {
+    "id": "evt-1788664119630-2u4tc",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "501x643"
+    },
+    "created_at": "2026-09-06T03:08:39.630Z"
+  },
+  {
+    "id": "evt-1788664095348-t50of",
+    "event_type": "project_click",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "501x643",
+      "title": "DimarCloud • Network Topology & Server Monitor"
+    },
+    "created_at": "2026-09-06T03:08:15.348Z"
+  },
+  {
+    "id": "evt-1788664061489-l1qlp",
+    "event_type": "project_click",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "501x643",
+      "title": "DimarCloud • Network Topology & Server Monitor"
+    },
+    "created_at": "2026-09-06T03:07:41.489Z"
+  },
+  {
+    "id": "evt-1788663154782-fijk2",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "501x643"
+    },
+    "created_at": "2026-09-06T02:52:34.782Z"
+  },
+  {
+    "id": "evt-1788663021595-gaj0i",
+    "event_type": "project_click",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "501x643",
+      "title": "DimarCloud • Network Topology & Server Monitor"
+    },
+    "created_at": "2026-09-06T02:50:21.595Z"
+  },
+  {
+    "id": "evt-1788662688260-7gvfu",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/admin",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-06T02:44:48.260Z"
+  },
+  {
+    "id": "evt-1788662688109-r4s8a",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/admin",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-06T02:44:48.109Z"
+  },
+  {
+    "id": "evt-1788662685599-txppn",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/admin",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-06T02:44:45.599Z"
+  },
+  {
+    "id": "evt-1788539103912-fg63p",
+    "event_type": "cv_download",
+    "event_data": {
+      "device": "desktop",
+      "path": "/",
+      "screen": "1280x612",
+      "source": "terminal"
+    },
+    "created_at": "2026-09-04T16:25:03.912Z"
+  },
+  {
+    "id": "evt-1788539057572-vd4uj",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "desktop",
+      "path": "/",
+      "screen": "1280x612"
+    },
+    "created_at": "2026-09-04T16:24:17.572Z"
+  },
+  {
+    "id": "evt-1788539033693-0t7az",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "375x667"
+    },
+    "created_at": "2026-09-04T16:23:53.693Z"
+  },
+  {
+    "id": "evt-1788538861201-kin6r",
+    "event_type": "project_click",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "502x606",
+      "title": "CyberCommerce • High-Performance E-Commerce"
+    },
+    "created_at": "2026-09-04T16:21:01.201Z"
+  },
+  {
+    "id": "evt-1788538816138-vkp6m",
+    "event_type": "cv_download",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "502x606",
+      "source": "hero"
+    },
+    "created_at": "2026-09-04T16:20:16.138Z"
+  },
+  {
+    "id": "evt-1788538728398-7hycq",
+    "event_type": "terminal_open",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "502x606"
+    },
+    "created_at": "2026-09-04T16:18:48.398Z"
+  },
+  {
+    "id": "evt-1788538183026-dm0h9",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "375x667",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-04T16:09:43.026Z"
+  },
+  {
+    "id": "evt-1788538183008-g21zw",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/admin",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-04T16:09:43.008Z"
+  },
+  {
+    "id": "evt-1788538182992-vq2kt",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "mobile",
+      "path": "/admin",
+      "screen": "502x606",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-04T16:09:42.992Z"
+  },
+  {
+    "id": "evt-1788538182982-cvnea",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "desktop",
+      "path": "/admin",
+      "screen": "1280x612",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-04T16:09:42.982Z"
+  },
+  {
+    "id": "evt-1788538182976-nnt0n",
+    "event_type": "page_view",
+    "event_data": {
+      "device": "mobile",
+      "path": "/",
+      "screen": "502x606",
+      "referrer": "direct"
+    },
+    "created_at": "2026-09-04T16:09:42.976Z"
+  }
+]

@@ -1,0 +1,171 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Length 2600 >>
+stream
+BT
+/F1 22 Tf
+50 780 Td
+(MUHAMMAD JIHAN DIMAR) Tj
+ET
+BT
+/F1 11 Tf
+50 760 Td
+(Fullstack Web Developer & TKJ Alumnus 2021) Tj
+ET
+BT
+/F2 9.5 Tf
+50 742 Td
+(Email: contact@dimar.dev | Malang, Jawa Timur | Portfolio: dimar.dev | GitHub: github.com) Tj
+ET
+BT
+/F1 12 Tf
+50 710 Td
+(RINGKASAN PROFESIONAL) Tj
+ET
+BT
+/F2 9.5 Tf
+50 692 Td
+(Pengembang Fullstack dengan latar belakang pendidikan Teknik Komputer dan Jaringan (TKJ) lulusan 2021) Tj
+0 -14 Td
+(dari SMK NU Sunan Ampel Poncokusumo. Menguasai arsitektur web modern (Next.js 15, React, Three.js 3D),) Tj
+0 -14 Td
+(rekayasa backend (Node.js, PostgreSQL, REST API, JWT), serta pemahaman infrastruktur server Linux dan) Tj
+0 -14 Td
+(manajemen protokol jaringan TCP/IP.) Tj
+ET
+BT
+/F1 12 Tf
+50 615 Td
+(KOMPETENSI TEKNIS & TECH STACK) Tj
+ET
+BT
+/F1 10 Tf
+50 595 Td
+(Frontend Development:) Tj
+ET
+BT
+/F2 9.5 Tf
+165 595 Td
+(Next.js 15+ (App Router), React 19, TypeScript, Three.js 3D WebGL, CSS Modules) Tj
+ET
+BT
+/F1 10 Tf
+50 575 Td
+(Backend & Database:) Tj
+ET
+BT
+/F2 9.5 Tf
+165 575 Td
+(Node.js, Express.js, PostgreSQL, MySQL, Redis, RESTful API, JWT Authentication) Tj
+ET
+BT
+/F1 10 Tf
+50 555 Td
+(Networking & DevOps:) Tj
+ET
+BT
+/F2 9.5 Tf
+165 555 Td
+(Linux Server (Debian/Ubuntu), TCP/IP, Mikrotik Routing, Git, Docker, CI/CD) Tj
+ET
+BT
+/F1 12 Tf
+50 515 Td
+(PENGALAMAN REKAYASA & PROYEK UTAMA) Tj
+ET
+BT
+/F1 10.5 Tf
+50 495 Td
+(1. DimarCloud - Network Topology & Server Monitor (Fullstack)) Tj
+ET
+BT
+/F2 9 Tf
+50 480 Td
+(   Platform visualisasi 3D WebGL topologi jaringan komputer dan status live server dengan WebSockets.) Tj
+0 -13 Td
+(   Teknologi: Next.js 15, Three.js, Node.js, WebSockets, Chart.js.) Tj
+ET
+BT
+/F1 10.5 Tf
+50 445 Td
+(2. CyberCommerce - High-Performance E-Commerce (Fullstack)) Tj
+ET
+BT
+/F2 9 Tf
+50 430 Td
+(   Aplikasi e-commerce modern dengan Server-Side Rendering, manajemen state responsif, dan PostgreSQL.) Tj
+0 -13 Td
+(   Teknologi: Next.js, TypeScript, React 19, PostgreSQL, Stripe/Midtrans.) Tj
+ET
+BT
+/F1 10.5 Tf
+50 395 Td
+(3. Sentinel API - Secure Microservice REST API Hub (Backend)) Tj
+ET
+BT
+/F2 9 Tf
+50 380 Td
+(   Arsitektur backend tangguh berstandar enterprise dengan proteksi JWT, RBAC, dan Redis caching.) Tj
+0 -13 Td
+(   Teknologi: Node.js, Express.js, PostgreSQL, Redis, Docker.) Tj
+ET
+BT
+/F1 10.5 Tf
+50 345 Td
+(4. Aura3D - Immersive WebGL Shader & Audio Canvas (Frontend)) Tj
+ET
+BT
+/F2 9 Tf
+50 330 Td
+(   Eksperimen visual interaktif 3D WebGL dengan Web Audio API visualizer FFT dan interaksi mouse.) Tj
+0 -13 Td
+(   Teknologi: Three.js, WebGL GLSL Shaders, Web Audio API.) Tj
+ET
+BT
+/F1 12 Tf
+50 290 Td
+(RIWAYAT PENDIDIKAN) Tj
+ET
+BT
+/F1 10.5 Tf
+50 270 Td
+(SMK NU Sunan Ampel Poncokusumo) Tj
+ET
+BT
+/F2 9.5 Tf
+50 255 Td
+(Jurusan: Teknik Komputer dan Jaringan (TKJ) | Lulus: 2021) Tj
+0 -14 Td
+(Fokus: Administrasi Jaringan Komputer, Subnetting IP, Linux Server, Routing & Troubleshooting.) Tj
+ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000244 00000 n 
+0000000325 00000 n 
+0000000401 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3100
+%%EOF

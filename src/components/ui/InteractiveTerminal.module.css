@@ -1,0 +1,333 @@
+.terminalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(4, 8, 16, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.terminalContainer {
+  width: 100%;
+  max-width: 850px;
+  height: 540px;
+  background: #090d16;
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(0, 242, 254, 0.15);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, Monaco, monospace;
+}
+
+.terminalContainer.maximized {
+  max-width: 98vw;
+  height: 94vh;
+  border-radius: 6px;
+}
+
+/* CRT Scanline Overlay */
+.terminalContainer::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Top Window Header */
+.terminalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: #0f1523;
+  border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+  user-select: none;
+  z-index: 25;
+}
+
+.windowButtons {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.winBtn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease;
+}
+
+.winBtn:hover {
+  transform: scale(1.15);
+}
+
+.closeBtn {
+  background: #ff5f56;
+}
+
+.minBtn {
+  background: #ffbd2e;
+}
+
+.maxBtn {
+  background: #27c93f;
+}
+
+.terminalTitle {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.terminalTitle span.userHost {
+  color: #00f2fe;
+}
+
+.terminalTitle span.tkjTag {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  font-size: 0.7rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.iconBtn:hover {
+  color: #00f2fe;
+  background: rgba(0, 242, 254, 0.1);
+}
+
+/* Terminal Body / Output Scroll */
+.terminalBody {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  position: relative;
+  z-index: 10;
+}
+
+.terminalBody::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminalBody::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.2);
+  border-radius: 3px;
+}
+
+.welcomeBanner {
+  margin-bottom: 1.25rem;
+  padding: 0.85rem;
+  background: rgba(0, 242, 254, 0.05);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  border-radius: 6px;
+  color: #38bdf8;
+  font-size: 0.82rem;
+}
+
+.outputRow {
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.inputEcho {
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+}
+
+.inputPrompt {
+  color: #10b981;
+}
+
+.outputSuccess {
+  color: #34d399;
+}
+
+.outputError {
+  color: #f87171;
+}
+
+.outputSystem {
+  color: #38bdf8;
+}
+
+.outputCyan {
+  color: #00f2fe;
+}
+
+.outputYellow {
+  color: #facc15;
+}
+
+/* Command Prompt Input Area */
+.promptRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.promptSymbol {
+  color: #10b981;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.terminalInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #00f2fe;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0;
+  caret-color: #00f2fe;
+}
+
+/* Quick Command Chips (Mobile Friendly) */
+.quickBar {
+  padding: 0.5rem 1rem;
+  background: #0a0e18;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  white-space: nowrap;
+  z-index: 25;
+}
+
+.quickBar::-webkit-scrollbar {
+  height: 3px;
+}
+
+.quickBar::-webkit-scrollbar-thumb {
+  background: rgba(0, 242, 254, 0.2);
+}
+
+.quickTitle {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-right: 0.25rem;
+}
+
+.quickChip {
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.2);
+  color: #38bdf8;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quickChip:hover {
+  background: rgba(0, 242, 254, 0.25);
+  color: #ffffff;
+  border-color: #00f2fe;
+  transform: translateY(-1px);
+}
+
+/* Responsive Styles */
+.helpCommandGrid {
+  display: grid;
+  grid-template-columns: minmax(130px, auto) 1fr;
+  gap: 0.35rem 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .terminalOverlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .terminalContainer {
+    max-width: 100vw;
+    height: 82vh;
+    border-radius: 16px 16px 0 0;
+    border-bottom: none;
+  }
+
+  .terminalContainer.maximized {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .terminalBody {
+    font-size: 0.8rem;
+    padding: 0.75rem;
+  }
+
+  .terminalTitle span.userHost {
+    font-size: 0.75rem;
+  }
+
+  .helpCommandGrid {
+    grid-template-columns: minmax(105px, auto) 1fr;
+    font-size: 0.76rem;
+    gap: 0.25rem 0.4rem;
+  }
+}

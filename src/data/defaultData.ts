@@ -1,0 +1,292 @@
+import { FullPortfolioData, ProfileData, ProjectItem, SkillItem, TimelineItem } from '@/types/portfolio';
+
+export const defaultProfile: ProfileData = {
+  id: 'main',
+  name: 'MUHAMMAD JIHAN DIMAR',
+  call_name: 'Dimar',
+  school: 'SMK NU Sunan Ampel Poncokusumo',
+  grad_year: '2021',
+  major: 'Teknik Komputer dan Jaringan (TKJ)',
+  roles: [
+    'Fullstack Developer',
+    'Frontend Specialist',
+    'Backend Architect',
+    'TKJ & Network Alumnus',
+  ],
+  bio_description:
+    'Biasa dipanggil Dimar. Lulusan SMK NU Sunan Ampel Poncokusumo 2021 jurusan Teknik Komputer dan Jaringan (TKJ). Memiliki antusiasme mendalam dalam dunia pemrograman Frontend & Backend—menggabungkan logika pemahaman arsitektur jaringan komputer dengan rekayasa web modern untuk menciptakan aplikasi digital yang cepat, tangguh, dan bernilai guna tinggi.',
+  avatar_url: '/images/dimar.jpg',
+  cv_url: '/cv/CV_Muhammad_Jihan_Dimar.pdf',
+  cv_last_updated: '2026-09-06T00:00:00.000Z',
+  stats: {
+    year: '2021',
+    label1: 'Alumni SMK NU Sunan Ampel',
+    role: 'Fullstack',
+    label2: 'Frontend & Backend',
+    background: 'TKJ',
+    label3: 'Network & Sysadmin Base',
+  },
+  social_links: {
+    github: 'https://github.com',
+    linkedin: 'https://linkedin.com',
+    instagram: 'https://instagram.com',
+    whatsapp: 'https://wa.me/',
+    email: 'contact@dimar.dev',
+  },
+};
+
+export const defaultProjects: ProjectItem[] = [
+  {
+    id: 'dimarcloud',
+    title: 'DimarCloud • Network Topology & Server Monitor',
+    category: 'fullstack',
+    icon: '🌐',
+    shortDesc:
+      'Platform visualisasi real-time topologi jaringan komputer dan status server live dengan WebGL 3D dan WebSockets.',
+    tech: ['Next.js 15', 'Three.js', 'Node.js', 'WebSockets', 'Chart.js'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com',
+    details: {
+      overview:
+        'Mengawinkan keilmuan Teknik Komputer dan Jaringan (TKJ) dengan rekayasa web fullstack. Sistem ini memvisualisasikan paket data jaringan secara 3D, memantau utilisasi bandwidth, latensi ping, status port terbuka, dan uptime server secara real-time.',
+      architecture:
+        'Frontend Next.js merender node jaringan 3D via Three.js yang terhubung dengan WebSocket streaming dari backend Node.js. Mengumpulkan statistik CPU, RAM, dan I/O throughput server Linux.',
+      features: [
+        'Visualisasi topologi router, switch, dan client secara 3D interaktif',
+        'Streaming telemetri real-time dengan socket latensi rendah',
+        'Deteksi anomali jaringan dan notifikasi packet drop otomatis',
+        'Dashboard analitik performa server dengan multi-device responsive view',
+      ],
+    },
+    orderIndex: 1,
+  },
+  {
+    id: 'cybercommerce',
+    title: 'CyberCommerce • High-Performance E-Commerce',
+    category: 'fullstack',
+    icon: '⚡',
+    shortDesc:
+      'Aplikasi belanja modern dengan Server Components Next.js, manajemen state responsif, dan checkout terintegrasi.',
+    tech: ['Next.js', 'TypeScript', 'React 19', 'PostgreSQL', 'Stripe/Midtrans'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com',
+    details: {
+      overview:
+        'Platform e-commerce kecepatan tinggi yang dibangun untuk pengalaman checkout yang mulus. Mengutamakan Core Web Vitals, SSR untuk SEO produk, serta filter instan multi-kategori.',
+      architecture:
+        'Database PostgreSQL dengan relational schema produk & transaksi. Backend Next.js API routes dengan validasi payload Zod dan enkripsi token session aman.',
+      features: [
+        'Render instan produk dengan Server-Side Rendering (SSR)',
+        'Pencarian dan filter multi-atribut real-time tanpa reload',
+        'Keranjang belanja reaktif dengan optimistic updates',
+        'Sistem manajemen inventori dan webhook konfirmasi pesanan',
+      ],
+    },
+    orderIndex: 2,
+  },
+  {
+    id: 'sentinelapi',
+    title: 'Sentinel • Secure Microservice REST API Hub',
+    category: 'backend',
+    icon: '🛡️',
+    shortDesc:
+      'Arsitektur backend tangguh berstandar enterprise dengan proteksi JWT, role-based access control, dan Redis caching.',
+    tech: ['Node.js', 'Express.js', 'PostgreSQL', 'Redis', 'Docker'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com',
+    details: {
+      overview:
+        'Mesin backend handal yang dirancang untuk melayani ribuan request per detik dengan proteksi berlapis, sanitasi input, dan caching dinamis.',
+      architecture:
+        'Struktur MVC / modular clean architecture. Memisahkan controller, service layer, dan data repository. Dilengkapi audit logging dan endpoint health-check otomatis.',
+      features: [
+        'Autentikasi berlapis JWT dengan refresh token rotation',
+        'Role-Based Access Control (RBAC: Admin, Operator, User)',
+        'Redis in-memory caching untuk mengurangi query overhead ke database hingga 70%',
+        'Rate-limiting dan perlindungan serangan brute-force / DDoS dasar',
+      ],
+    },
+    orderIndex: 3,
+  },
+  {
+    id: 'aura3d',
+    title: 'Aura3D • Immersive WebGL Shader & Audio Canvas',
+    category: 'frontend',
+    icon: '🎮',
+    shortDesc:
+      'Eksperimen visual interaktif 3D WebGL dengan Web Audio API visualizer yang merespons irama suara dan mouse gravitasi.',
+    tech: ['Three.js', 'WebGL', 'GLSL Shaders', 'Web Audio API', 'CSS3'],
+    liveUrl: '#',
+    githubUrl: 'https://github.com',
+    details: {
+      overview:
+        'Eksplorasi antarmuka masa depan (next-gen frontend) yang menggabungkan render grafis 3D realtime dengan pemrosesan sinyal frekuensi audio.',
+      architecture:
+        'Pure Three.js canvas dengan custom vertex & fragment shaders untuk menghasilkan gelombang partikel dinamis pada 60 frame per detik tanpa membebani GPU klien.',
+      features: [
+        'Pemrosesan Fast Fourier Transform (FFT) dari audio input secara realtime',
+        'Animasi partikel 3D dengan interaksi gravitasi kursor pengguna',
+        'Performa teroptimasi penuh untuk perangkat mobile dan desktop',
+        'Audio synth ambient generator berbasis Web Audio API',
+      ],
+    },
+    orderIndex: 4,
+  },
+];
+
+export const defaultSkills: SkillItem[] = [
+  {
+    id: 'nextjs',
+    name: 'Next.js 15+ (App Router)',
+    category: 'frontend',
+    level: 90,
+    icon: '⚡',
+    desc: 'Server Components, SSR/SSG, routing cepat, integrasi API, dan arsitektur performa tinggi.',
+    orderIndex: 1,
+  },
+  {
+    id: 'react',
+    name: 'React.js & Hooks',
+    category: 'frontend',
+    level: 92,
+    icon: '⚛️',
+    desc: 'Pembuatan komponen modular, custom hooks, reactive state, dan lifecycle optimization.',
+    orderIndex: 2,
+  },
+  {
+    id: 'typescript',
+    name: 'TypeScript & JavaScript (ES6+)',
+    category: 'frontend',
+    level: 88,
+    icon: '📘',
+    desc: 'Type safety, async/await, closures, modern ES features, dan clean code structure.',
+    orderIndex: 3,
+  },
+  {
+    id: 'threejs',
+    name: 'Three.js & 3D WebGL',
+    category: 'frontend',
+    level: 82,
+    icon: '🎮',
+    desc: 'Render 3D scenes interaktif, particle constellation, camera control, dan optimasi 60fps.',
+    orderIndex: 4,
+  },
+  {
+    id: 'css',
+    name: 'Responsive CSS & Glassmorphism',
+    category: 'frontend',
+    level: 94,
+    icon: '🎨',
+    desc: 'Mobile-first styling, CSS animations, design tokens, dan antarmuka futuristik.',
+    orderIndex: 5,
+  },
+  {
+    id: 'nodejs',
+    name: 'Node.js & Express.js',
+    category: 'backend',
+    level: 88,
+    icon: '🚀',
+    desc: 'REST API, middleware, asynchronous event-loop handling, dan error handling terstruktur.',
+    orderIndex: 6,
+  },
+  {
+    id: 'rdbms',
+    name: 'Relational DB (MySQL & PostgreSQL)',
+    category: 'backend',
+    level: 86,
+    icon: '🗄️',
+    desc: 'Relational schema design, query indexing, normalisasi data, dan ORM/query builder.',
+    orderIndex: 7,
+  },
+  {
+    id: 'jwt',
+    name: 'RESTful API & JWT Security',
+    category: 'backend',
+    level: 90,
+    icon: '🛡️',
+    desc: 'Token-based authentication, password hashing bcrypt, CORS, dan rate-limiting.',
+    orderIndex: 8,
+  },
+  {
+    id: 'mongodb',
+    name: 'MongoDB & NoSQL',
+    category: 'backend',
+    level: 80,
+    icon: '🍃',
+    desc: 'Document-oriented database, flexible schema modeling, dan aggregations.',
+    orderIndex: 9,
+  },
+  {
+    id: 'linux',
+    name: 'Linux Server (Ubuntu / Debian)',
+    category: 'networking',
+    level: 89,
+    icon: '🐧',
+    desc: 'CLI navigation, SSH management, daemon systemd, file permissions, dan web server setup.',
+    orderIndex: 10,
+  },
+  {
+    id: 'tcpip',
+    name: 'Networking & TCP/IP Protocol',
+    category: 'networking',
+    level: 92,
+    icon: '🌐',
+    desc: 'Pondasi SMK NU Sunan Ampel: subnetting IPv4, DNS resolving, port mapping, dan traffic analysis.',
+    orderIndex: 11,
+  },
+  {
+    id: 'mikrotik',
+    name: 'Mikrotik & Routing Fundamentals',
+    category: 'networking',
+    level: 85,
+    icon: '📡',
+    desc: 'Bandwidth management, firewall NAT rules, queue tree, dan konfigurasi gateway.',
+    orderIndex: 12,
+  },
+  {
+    id: 'git',
+    name: 'Git & Version Control',
+    category: 'networking',
+    level: 90,
+    icon: '📦',
+    desc: 'Branching workflow, merge conflicts resolution, CI/CD automated deployment basics.',
+    orderIndex: 13,
+  },
+];
+
+export const defaultTimeline: TimelineItem[] = [
+  {
+    id: 'smk-nu',
+    year: '2018 — 2021 (LULUS)',
+    institution: 'SMK NU Sunan Ampel Poncokusumo',
+    title: 'Teknik Komputer dan Jaringan (TKJ)',
+    text: 'Menempa fondasi pemikiran teknik dan logika komputasi. Menguasai arsitektur jaringan komputer, routing protokol, subnetting IP, konfigurasi Linux Debian/Ubuntu Server, manajemen bandwidth Mikrotik, hingga pemeliharaan sistem perangkat keras. Menjadi batu loncatan yang melatih pemahaman esensial tentang bagaimana data terkirim antar server di dunia nyata.',
+    tags: ['🌐 TCP/IP & DNS', '🐧 Linux Server', '📡 Mikrotik Routing', '🔧 Network Troubleshooting'],
+    orderIndex: 1,
+  },
+  {
+    id: 'self-taught',
+    year: '2021 — 2023',
+    institution: 'Independent Engineering',
+    title: 'Eksplorasi Algoritma & Backend Engineering',
+    text: 'Melangkah dari instalasi jaringan fisik ke rekayasa perangkat lunak. Mempelajari JavaScript/TypeScript secara mendalam, memahami pola arsitektur backend, RESTful API design, relasi database (MySQL & PostgreSQL), serta manajemen autentikasi JWT.',
+    tags: ['⚙️ JavaScript / TS', '🗄️ MySQL & PostgreSQL', '🛡️ REST APIs', '📦 Git & GitHub'],
+    orderIndex: 2,
+  },
+  {
+    id: 'fullstack-specialist',
+    year: '2023 — SEKARANG',
+    institution: 'Next-Gen Web Architecture',
+    title: 'Fullstack Web Developer (Frontend & Backend)',
+    text: 'Membangun ekosistem aplikasi web modern skala penuh menggunakan Next.js App Router, React, Three.js WebGL untuk pengalaman interaktif 3D, serta backend Node.js yang cepat dan handal. Berfokus pada kecepatan muat, responsivitas multi-device, dan estetika visual kelas atas.',
+    tags: ['⚡ Next.js 15+', '⚛️ React & State', '🎮 Three.js 3D', '🚀 Node.js Architecture'],
+    orderIndex: 3,
+  },
+];
+
+export const defaultPortfolioData: FullPortfolioData = {
+  profile: defaultProfile,
+  projects: defaultProjects,
+  skills: defaultSkills,
+  timeline: defaultTimeline,
+};
