@@ -104,7 +104,13 @@ export default function Contact({ profile }: ContactProps) {
             </a>
 
             <a
-              href="https://wa.me/6282200000000?text=Halo%20Dimar,%20saya%20tertarik%20bekerja%20sama"
+              href={(() => {
+                const wa = currentProfile.social_links.whatsapp || '';
+                // Support both full URL (https://wa.me/...) and plain number (62xxx)
+                if (wa.startsWith('http')) return wa;
+                if (wa.match(/^\d+$/)) return `https://wa.me/${wa}?text=Halo%20Dimar,%20saya%20tertarik%20bekerja%20sama`;
+                return `https://wa.me/${wa.replace(/\D/g, '')}`;
+              })()}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactCard}
@@ -116,12 +122,16 @@ export default function Contact({ profile }: ContactProps) {
               </div>
               <div>
                 <span className={styles.contactLabel}>WhatsApp Messenger</span>
-                <p className={styles.contactValue}>Chat Dimar di WhatsApp</p>
+                <p className={styles.contactValue}>
+                  {currentProfile.social_links.whatsapp
+                    ? currentProfile.social_links.whatsapp.replace(/https?:\/\/(wa\.me\/)?/, '').split('?')[0]
+                    : 'Chat Dimar di WhatsApp'}
+                </p>
               </div>
             </a>
 
             <a
-              href="https://github.com"
+              href={currentProfile.social_links.github || 'https://github.com'}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.contactCard}
@@ -133,7 +143,11 @@ export default function Contact({ profile }: ContactProps) {
               </div>
               <div>
                 <span className={styles.contactLabel}>Profil Kode</span>
-                <p className={styles.contactValue}>github.com/dimar-dev</p>
+                <p className={styles.contactValue}>
+                  {currentProfile.social_links.github
+                    ? currentProfile.social_links.github.replace(/https?:\/\/(www\.)?github\.com\//, '')
+                    : 'github.com/dimar-dev'}
+                </p>
               </div>
             </a>
 
@@ -148,6 +162,7 @@ export default function Contact({ profile }: ContactProps) {
               </p>
             </div>
           </div>
+
 
           {/* Right Column: Interactive Form */}
           <div className={styles.formBox}>

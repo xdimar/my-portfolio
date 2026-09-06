@@ -4,9 +4,11 @@ import AnalyticsTracker from '@/components/ui/AnalyticsTracker';
 import JsonLd from '@/components/seo/JsonLd';
 import ConsoleBanner from '@/components/ui/ConsoleBanner';
 import { ThemeProvider } from '@/context/ThemeContext';
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://dimar.dev'),
+  
+  metadataBase: new URL('https://dimar.my.id'),
   title: 'Muhammad Jihan Dimar | Portfolio 3D - Fullstack Web Developer',
   description:
     'Portfolio resmi Muhammad Jihan Dimar (Dimar) — Lulusan SMK NU Sunan Ampel Poncokusumo 2021 jurusan Teknik Komputer dan Jaringan (TKJ). Spesialis pemrograman Frontend & Backend dengan Next.js, Three.js 3D, dan Node.js.',
@@ -24,16 +26,16 @@ export const metadata: Metadata = {
     'TKJ 2021',
     'Malang Web Developer',
   ],
-  authors: [{ name: 'Muhammad Jihan Dimar', url: 'https://dimar.dev' }],
+  authors: [{ name: 'Muhammad Jihan Dimar', url: 'https://dimar.my.id' }],
   creator: 'Muhammad Jihan Dimar',
   alternates: {
-    canonical: 'https://dimar.dev',
+    canonical: 'https://dimar.my.id',
   },
   openGraph: {
     title: 'Muhammad Jihan Dimar | 3D Interactive Portfolio',
     description:
       'Portfolio resmi Muhammad Jihan Dimar (Dimar) - Fullstack Developer & TKJ Alumnus SMK NU Sunan Ampel Poncokusumo 2021.',
-    url: 'https://dimar.dev',
+    url: 'https://dimar.my.id',
     siteName: 'Muhammad Jihan Dimar Portfolio',
     images: [
       {
@@ -72,6 +74,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  <Analytics/>
   return (
     <html lang="id" data-theme="cyan" suppressHydrationWarning>
       <head>

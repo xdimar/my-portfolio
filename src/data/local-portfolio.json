@@ -225,15 +225,6 @@
       "orderIndex": 9
     },
     {
-      "id": "linux",
-      "name": "Linux Server (Ubuntu / Debian)",
-      "category": "networking",
-      "level": 89,
-      "icon": "🐧",
-      "desc": "CLI navigation, SSH management, daemon systemd, file permissions, dan web server setup.",
-      "orderIndex": 10
-    },
-    {
       "id": "tcpip",
       "name": "Networking & TCP/IP Protocol",
       "category": "networking",

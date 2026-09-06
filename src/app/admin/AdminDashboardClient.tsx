@@ -1224,6 +1224,25 @@ export default function AdminDashboardClient({ initialData, initialMessages, ini
                 </div>
 
                 <div className={styles.fieldGroup}>
+                  <label className={styles.fieldLabel}>Nomor WhatsApp</label>
+                  <input
+                    type="text"
+                    className={styles.fieldInput}
+                    placeholder="Contoh: 6282312345678 atau https://wa.me/6282312345678"
+                    value={profile.social_links.whatsapp}
+                    onChange={(e) =>
+                      setProfile({
+                        ...profile,
+                        social_links: { ...profile.social_links, whatsapp: e.target.value },
+                      })
+                    }
+                  />
+                  <small style={{ color: 'var(--text-muted)', fontSize: '0.75rem', marginTop: '0.25rem', display: 'block' }}>
+                    Masukkan nomor saja (628xxx) atau URL lengkap wa.me. Kode negara wajib (62 untuk Indonesia).
+                  </small>
+                </div>
+
+                <div className={styles.fieldGroup}>
                   <label className={styles.fieldLabel}>Alamat Email</label>
                   <input
                     type="email"
